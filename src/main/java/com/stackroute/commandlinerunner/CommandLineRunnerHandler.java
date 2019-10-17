@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommandLineRunnerHandler implements CommandLineRunner {
    @Autowired
-    TrackRepository trackRepository;
+   private TrackRepository trackRepository;
     @Override
     public void run(String... args) throws Exception {
         try {

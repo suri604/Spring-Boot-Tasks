@@ -1,11 +1,8 @@
 package com.stackroute.customexceptions;
 
 public class TrackNotFoundException extends Exception {
-    String message;
-    public TrackNotFoundException()
-    {
+    private String message;
 
-    }
 
     public TrackNotFoundException(String message) {
         super(message);

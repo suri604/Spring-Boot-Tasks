@@ -1,7 +1,7 @@
 package com.stackroute.customexceptions;
 
 public class TrackAlreadyExistsException extends Exception {
-    String message;
+    private String message;
     public TrackAlreadyExistsException()
     {
 

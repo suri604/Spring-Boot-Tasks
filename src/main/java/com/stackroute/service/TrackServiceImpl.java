@@ -5,15 +5,16 @@ import com.stackroute.customexceptions.TrackNotFoundException;
 import com.stackroute.domain.Track;
 import com.stackroute.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-@Qualifier("precedence")
+@Primary
+//@Profile("trackdummy")
 public class TrackServiceImpl implements TrackService {
-    TrackRepository trackRepository;
+
+    private TrackRepository trackRepository;
     @Autowired
     public TrackServiceImpl(TrackRepository trackRepository)
     {
@@ -53,14 +54,14 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
-    public void deleteQuery(Track track) throws TrackNotFoundException {
+    public void deleteTrack(Track track) throws TrackNotFoundException {
         if(trackRepository.existsById(track.getTrackId())) {
             trackRepository.delete(track);
         }
         else
-            {
-                throw new TrackNotFoundException("Unable to delete track not found");
-            }
+        {
+            throw new TrackNotFoundException("Unable to delete track not found");
+        }
 
 
 
@@ -70,10 +71,10 @@ public class TrackServiceImpl implements TrackService {
     public List<Track> getTrackByName(String name) throws TrackNotFoundException {
 
         List<Track> tracks = trackRepository.getTrackByName(name);
-       if(tracks.size()==0)
-       {
-           throw new TrackNotFoundException();
-       }
+        if(tracks.size()==0)
+        {
+            throw new TrackNotFoundException("Unable to find track");
+        }
         return tracks;
 
     }

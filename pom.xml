@@ -32,10 +32,6 @@
 			<version>2.9.2</version>
 		</dependency>
 		<!-- for the global exception handlling class-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-hateoas</artifactId>
-		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>

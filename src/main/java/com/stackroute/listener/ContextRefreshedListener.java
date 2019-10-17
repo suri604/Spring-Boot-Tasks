@@ -1,5 +1,5 @@
 package com.stackroute.listener;
-
+/*
 import com.stackroute.domain.Track;
 import com.stackroute.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ public class ContextRefreshedListener implements ApplicationListener<ContextRefr
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         System.out.println("Handling context re-freshed event. ");
         Track track = new Track();
+        track.setTrackId(Integer.parseInt(env.getProperty("track.trackId")));
         track.setTrackName(env.getProperty("track.trackName"));
         track.setTrackComments(env.getProperty("track.trackComments"));
         try{
@@ -29,3 +30,5 @@ public class ContextRefreshedListener implements ApplicationListener<ContextRefr
 
     }
 }
+
+ */

@@ -16,7 +16,9 @@ import java.util.List;
 @RequestMapping(value ="api/v1")
 public class TrackController {
     @Autowired
-    TrackService trackService;
+            //Qualifier("dummyTrack")
+    private TrackService trackService;
+    private ResponseEntity responseEntity;
 
     public TrackController(TrackService trackService) {
         this.trackService = trackService;
@@ -25,7 +27,6 @@ public class TrackController {
     @PostMapping("track")
     public ResponseEntity<?> saveTrack(@RequestBody Track track)
     {
-        ResponseEntity responseEntity;
         try
         {
             trackService.savetrack(track);
@@ -41,7 +42,6 @@ public class TrackController {
     @GetMapping("/gettrack")
     public ResponseEntity<?> getAllTracks() {
 
-        ResponseEntity responseEntity;
         try
         {
 
@@ -56,7 +56,6 @@ public class TrackController {
     @PutMapping("/getupdate")
     public ResponseEntity<?> updateComments(@RequestBody Track track) {
 
-        ResponseEntity responseEntity;
         try
         {
              trackService.updateComments(track);
@@ -69,12 +68,11 @@ public class TrackController {
     }
     @ApiOperation(value = "Deletes tracks in the database")
     @DeleteMapping("/getdelete")
-    public ResponseEntity<?> deleteQuery(@RequestBody Track track) {
+    public ResponseEntity<?> deleteTrack(@RequestBody Track track) {
 
-        ResponseEntity responseEntity;
         try
         {
-            trackService.deleteQuery(track);
+            trackService.deleteTrack(track);
             responseEntity = new ResponseEntity<String>("Succesfully Deleted",HttpStatus.OK);
         }catch(TrackNotFoundException e)
         {
@@ -85,8 +83,6 @@ public class TrackController {
     @ApiOperation(value = "Returns tracks by the name in the database")
     @GetMapping("/getByName/{name}")
     public ResponseEntity<?> getTrackByName(@PathVariable String name)  {
-
-        ResponseEntity responseEntity;
         try
         {
 

@@ -9,7 +9,4 @@ import java.util.List;
 
 @Repository
 public interface TrackRepository extends MongoRepository<Track, Integer> {
-    public List<Track> getTrackByName(String name);
-
-
 }

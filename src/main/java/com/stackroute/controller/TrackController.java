@@ -80,20 +80,9 @@ public class TrackController {
         }
         return responseEntity;
     }
-    @ApiOperation(value = "Returns tracks by the name in the database")
-    @GetMapping("/getByName/{name}")
-    public ResponseEntity<?> getTrackByName(@PathVariable String name)  {
-        try
-        {
 
-            responseEntity = new ResponseEntity<List<Track>>(trackService.getTrackByName(name),HttpStatus.OK);
-        }catch(TrackNotFoundException e)
-        {
-            responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
-        }
-        return responseEntity;
     }
 
 
 
-}
+

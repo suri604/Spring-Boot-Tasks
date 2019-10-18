@@ -11,6 +11,6 @@ public interface TrackService {
     public List<Track> getAllTracks();
     public Track updateComments(Track track) throws TrackNotFoundException;
     public void deleteTrack(Track track) throws TrackNotFoundException;
-    public List<Track> getTrackByName(String name) throws TrackNotFoundException;
+
 
 }

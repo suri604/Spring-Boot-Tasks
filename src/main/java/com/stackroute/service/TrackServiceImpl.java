@@ -5,17 +5,16 @@ import com.stackroute.customexceptions.TrackNotFoundException;
 import com.stackroute.domain.Track;
 import com.stackroute.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-@Primary
+//@Primary
 //@Profile("trackdummy")
 public class TrackServiceImpl implements TrackService {
-
-    private TrackRepository trackRepository;
     @Autowired
+    private TrackRepository trackRepository;
+
     public TrackServiceImpl(TrackRepository trackRepository)
     {
         this.trackRepository= trackRepository;
@@ -42,7 +41,7 @@ public class TrackServiceImpl implements TrackService {
     @Override
     public Track updateComments(Track track) throws TrackNotFoundException {
         if(trackRepository.existsById(track.getTrackId())) {
-            Track updateTrack = trackRepository.getOne(track.getTrackId());
+            Track updateTrack = trackRepository.findById(track.getTrackId()).get();
             updateTrack.setTrackComments(track.getTrackComments());
             trackRepository.save(updateTrack);
             return updateTrack;
